@@ -35,3 +35,7 @@ ui_components_playground-*.tar
 npm-debug.log
 /assets/node_modules/
 
+# On Replit these are stored in the repl directory
+/.mix
+/.hex
+/.elixir_l

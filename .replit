@@ -1,0 +1,28 @@
+run = """
+mix local.hex --if-missing --force
+iex -S mix phx.server
+"""
+hidden = [".mix", ".hex", ".elixir_ls", "mix.lock", ".git", "_build", ".gitignore", ".formatter.exs", "deps"]
+modules = ["elixir-1_15", "web", "nodejs-20", "nix"]
+
+[nix]
+channel = "stable-24_05"
+
+[languages.elixir]
+pattern = "**/{*.exs,*.ex}"
+
+[languages.elixir.languageServer]
+start = ["elixir-ls"]
+
+[env]
+LC_ALL = "en_US.UTF-8"
+HEX_HOME = "/home/runner/${REPL_SLUG}/.hex"
+MIX_HOME = "/home/runner/${REPL_SLUG}/.mix"
+
+[deployment]
+run = ["sh", "-c", "iex -S mix phx.server"]
+
+[[ports]]
+localPort = 4000
+externalPort = 80
+exposeLocalhost = true
